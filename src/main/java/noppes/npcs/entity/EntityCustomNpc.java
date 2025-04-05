@@ -1,5 +1,6 @@
 package noppes.npcs.entity;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,7 +11,7 @@ import noppes.npcs.client.EntityUtil;
 import noppes.npcs.entity.data.ModelData;
 import noppes.npcs.entity.data.ModelPartData;
 
-public class EntityCustomNpc extends EntityNPCFlying {
+public class EntityCustomNpc extends EntityNPCFlying implements IEntityBreathable {
 	public ModelData modelData = new ModelData();
 
 	public EntityCustomNpc(World world) {
@@ -60,6 +61,12 @@ public class EntityCustomNpc extends EntityNPCFlying {
     	updateHitbox();
     }
 
+    @Override
+    public boolean canBreath()
+    {
+        return true;
+    }
+    
 	@Override
 	public void updateHitbox() {
 		Entity entity = modelData.getEntity(this);
